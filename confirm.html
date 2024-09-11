@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation</title>
+
+
+<script src="server.js"></script>
+<script src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+
+        }
+
+	 .form-group input{
+		 padding: 10px;
+   	 border-radius: 10px;
+    	border: 1px solid #ddd;
+
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .payment-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .product-image {
+            float: right;
+  width: 50px; /* adjust the width as needed */
+  height: 50px; /* adjust the height as needed */
+  margin-right: 30px; /* add some space between the input/select and the image */
+  vertical-align: middle; /* align the image vertically with the input/select */
+}
+
+        
+	#bg {
+    position: fixed; /* Stay in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Put it behind other content */
+}
+#product-name {
+    float: right;
+  text-align: right;
+  margin-right: 30px;
+}
+
+
+    </style>
+</head>
+<body>
+  <img src="phewa.jpg" alt="Greenery Background" id="bg">
+</body>
+
+<body>
+
+    <div class="container">
+        <h2>Confirmation</h2>
+
+        <form id="payment-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="fullName" name="name" placeholder="Your Name" required>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <div class="phone-input-container">
+                    <select id="country-code" name="country-code" required>
+                        <option value="+977">+977 (Nepal)</option>
+                        <!-- Add more country codes as needed -->
+                    </select>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                    <img src="" alt="Product Image" id="prod-img" class="product-image">
+                </div>
+            </div>
+ 
+                
+           
+
+            <div class="form-group">
+                <label for="country">Select Country</label>
+                <select id="country" name="country" required>
+                    <option value="">Select your country</option>
+                    <option value="AU">Australia</option>
+                    <option value="BN">Bangladesh</option>
+                    <option value="CA">Canada</option>
+                    <option value="CH">China</option>
+                    <option value="DE">Denmark</option>
+                    <option value="FR">France</option>
+                    <option value="GE">Germany</option>
+                    <option value="IN">India</option>
+                    <option value="jP">Japan</option>
+                    <option value="Ml">Malaysia</option>
+                    <option value="NP">Nepal</option>
+                    <option value="NT">Netherlands</option>
+                    <option value="NZ">New zealand</option>
+                    <option value="SK">South Korea</option>
+                    <option value="SP">Spain</option>
+                    <option value="SL">Sri Lanka</option>
+                    <option value="SL">Switzerland</option>
+                    <option value="TH">Thailand</option>
+                    <option value="TH">UAE</option>           
+                    <option value="GB">United Kingdom</option>
+                    <option value="US">United States</option>
+                    <option value="OH">Other</option>
+                    <!-- You can add more countries as needed -->
+                </select>
+        
+             <!--<img src="lake.jpeg" alt="product image" id="prod-img">-->   
+             
+
+                <label id="product-name"></label>
+             
+               
+            </div>
+          
+       
+
+            <div class="form-group">
+                <label for="amount">Amount to Pay (in USD)</label>
+                <label type="number" id="amount" name="amount" >
+            </div>
+
+            <div class="payment-btn">
+                <input type="submit" id="send-email-btn" value="Book Now">
+          
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const productData = JSON.parse(sessionStorage.getItem('productData'));
+        
+
+/*
+        const sendEmailBtn = document.getElementById('send-email-btn');
+        console.log("load hudai");
+    
+        sendEmailBtn.addEventListener('click', () => {
+          fetch('http://localhost:3000/send-email', {
+            method: 'POST',
+            
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error(error));
+        });
+*/
+      </script>
+       
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const plantName = urlParams.get('name');
+const plantPrice = urlParams.get('price2');
+const plantImage = urlParams.get('image');
+
+// Now you can use these variables to display the plant's information
+console.log(plantName, plantPrice, plantImage);
+
+const prodImgElement = document.getElementById('prod-img');
+prodImgElement.src = productData.image;
+
+const productNameElement = document.getElementById('product-name');
+productNameElement.textContent = productData.name;
+
+const productPriceElement = document.getElementById('amount');
+productPriceElement.textContent = productData.price2;
+
+</script>
+
+    <!-- Load firebase library -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
+        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAHdFhkEldLXkzbW_58iN49XSdRI8DPwRU",
+            authDomain: "tree-tales-79a64.firebaseapp.com",
+            projectId: "tree-tales-79a64",
+            storageBucket: "tree-tales-79a64.appspot.com",
+            messagingSenderId: "322327635192",
+            appId: "1:322327635192:web:3e7f3fa189f251b3aec70d",
+            measurementId: "G-36ETZN3L03"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+
+        document.getElementById('payment-form').addEventListener('submit', submitForm);
+
+        function submitForm(e) {
+            e.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const country = document.getElementById('country').value;
+            const tree = document.getElementById('product-name').textContent;
+            const amount = document.getElementById('amount').textContent;
+
+            console.log("Form Submitted", { fullName, email, phone, country, tree, amount });
+
+            // Push data to Firebase database
+            saveBooking(fullName, email, phone, country, tree, amount);
+        }
+
+        function saveBooking(fullName, email, phone, country, tree, amount) {
+            // Create a new booking entry
+            const newBookingRef = push(ref(database, 'bookings'));
+
+            console.log("Saving Booking", { fullName, email, phone, country, tree, amount });
+
+            set(newBookingRef, {
+                fullName: fullName,
+                email: email,
+                phone: phone,
+                country: country,
+                tree:tree,
+                amount: amount
+            }).then(() => {
+                sendEmail();
+                console.log("Booking submitted successfully!");
+                alert("Booking submitted successfully!");
+            }).catch((error) => {
+                console.error("Error submitting booking: ", error);
+            });
+            // yo ho kk----------
+            function sendEmail (){
+                fetch('http://localhost:3000/send-email', {
+            method: 'POST',
+            
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error(error));
+            
+            }
+         
+            
+        }
+        
+    </script>
+</body>
+</html>

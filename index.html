@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="style.css">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeTales - Plant your own Tree</title>
+	<!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
+</head>
+
+
+<body>
+    <header>
+        <div class="logo">TreeTales</div>
+        <nav>
+            <ul>
+                <li><a href="#trees-section">Trees</a></li>
+       
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#contact-section">Contact</a></li>
+
+            </ul>
+        </nav>
+        <section class="search">
+
+        </section>
+       
+    </header>
+
+    <section class="hero">
+        <h1>Plant your own Tree</h1>
+        <p>One Step Closer towards Saving Mother Earth</p>
+        <div class="category-buttons">
+            <button>Pokhara</button>
+            <button>Kathmandu</button>
+            <button>Chitwan</button>
+            <button>Lalitpur</button>
+            <button>Hemja</button>
+        </div>
+    </section>
+
+
+<section id="trees-section">
+    <section class="featured-products">
+        <div class="product-card" id="product1">
+             <img src="product1.jpeg" alt="Pinus roxburghii">
+            <h3>Chir pine</h3>
+            <p><i>Pinus roxburghii</i></p>
+            <p>$39.00</p>
+	    <button onclick="goToPage2()">Cart</button>
+        </div>
+        <div class="product-card" id="product2">
+ 	    <img src="product2.jpeg" alt="Schima wallichii">
+
+            <h3>Needlewood Tree</h3>
+            <p><i>Schima wallichii</i></p>
+            <p>$35.00</p>
+	    <button onclick="goToPage2()">Cart</button>
+	    </div>
+		
+        <div class="product-card" id="product3">
+ 	     <img src="product3.jpeg" alt="Azadirachta indica">
+
+            <h3>Neem Tree</h3>
+            <p><i>Azadirachta indica</i></p>
+            <p>$39.00</p>
+            <button onclick="goToPage2()">Cart</button>
+        </div>
+	<script src="script.js"></script>
+</section>
+    </section>
+
+    <section class="offers">
+        <div class="offer-banner">
+            <p>Join the Green Revolution!</p>
+            <img src="c11.jpeg" alt="card-1">
+        </div>
+        <div class="experience-banner">
+            <p>Plant a Tree Today for a Greener Tomorrow!</p>
+            <img src="c12.jpeg" alt="card-2">
+        </div>
+    </section>
+
+
+    
+ <script>
+    // Function to navigate to the second page
+    function goToPage2() {
+       
+
+        // Get the product card element that was clicked
+        const productCard = event.target.closest('.product-card');
+
+         // Extract the product information
+        const productImage = productCard.querySelector('img').src;
+        const productName = productCard.querySelector('h3').textContent;
+        const productPrice = productCard.querySelector('p:nth-child(3)').textContent;
+        const productPrice2 = productCard.querySelector('p:nth-child(4)').textContent;
+        console.log("extract info");
+
+// Store the product information in a variable
+const productData = {
+image: productImage,
+name: productName,
+price: productPrice,
+price2:productPrice2,
+};
+
+
+// Now you can pass the productData variable to the next page
+// using a method such as localStorage, sessionStorage, or a query string
+sessionStorage.setItem('productData', JSON.stringify(productData));
+const nextPageUrl = 'confirm.html?' + Object.keys(productData).map(key => `${key}=${productData[key]}`).join('&');
+window.location.href = nextPageUrl; // second page
+    }
+</script>
+
+<!-- Contact Us Section -->
+    <section id="contact-section">
+	<section class="contact us">
+
+	<h1>&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+	<h1>&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</h1>
+	</section>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;Our address is:</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;Pokhara 25, Hemja Milanchowk</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;Phone: +977 9824193938</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;Email: [treetales4@gmail.com]</p>
+	<div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.830135934144!2d83.9352654!3d28.2776806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f45!3m3!1m2!1s0x399593d616cfb96b:0xb0a6d459d68cc719!2sMilan+Chowk+Hemja!5e0!3m2!1sen!2sus!4v1643720613421!5m2!1sen!2sus" width="390" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+
+</section>
+
+
+    <footer>
+        <p>&copy; 2024 TreeTales. All rights reserved.</p>
+	<p>Developed by Dinesh Tripathi.</p>
+    </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
