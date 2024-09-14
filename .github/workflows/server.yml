@@ -16,7 +16,7 @@ jobs:
         run: pwd
 
       - name: Install dependencies
-        run: npm install --prefix .
+        run: npm install 
 
       - name: Start server
         run: node server.js
