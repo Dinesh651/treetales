@@ -64,7 +64,7 @@ app.post('/send-email', (req, res) => {
 });
 
 // Start the server
-const port = 3000;
+const port = 8080;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
